@@ -1,0 +1,57 @@
+.heading {
+    color: #0A4E63;
+    font-family: "Bree Serif";
+    font-size: 65px;
+    margin: 10px;
+}
+
+.bg {
+    font-family: Arial, sans-serif;
+    background-color: #ECFBF9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-size: cover;
+    margin: 0;
+    height: 100vh;
+}
+
+.time {
+    font-size: 30px;
+}
+
+.img1 {
+    height: 30%;
+    width: 20%;
+}
+
+.stopwatch {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 30px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.controls {
+    margin-bottom: 20px;
+}
+
+.buttonStart {
+    background-color: #C8E3EC;
+}
+
+.controls button {
+    padding: 10px 20px;
+    margin: 0 10px;
+    font-size: 30px;
+    cursor: pointer;
+    border: none;
+    background-color: #0A4E63;
+    color: #fff;
+    border-radius: 4px;
+}
+
+.controls button:hover {
+    background-color: hsl(0, 100%, 35%);
+}
