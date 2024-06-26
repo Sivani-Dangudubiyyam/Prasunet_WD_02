@@ -1,70 +1,85 @@
-let startTime;
-let elapsedTime = 0;
-let timerInterval;
-
-const startStopBtn = document.getElementById('startStopBtn');
-const lapResetBtn = document.getElementById('lapResetBtn');
-const timeDisplay = document.getElementById('time');
-const lapsList = document.getElementById('lapsList');
-
-// Start or stop the stopwatch
-function startStop() {
-    if (timerInterval) {
-        // to Stop the timer
-        clearInterval(timerInterval);
-        timerInterval = null;
-        startStopBtn.textContent = 'Start';
-    } else {
-        //to Start the timer
-        startTime = Date.now() - elapsedTime;
-        timerInterval = setInterval(updateTimeDisplay, 10);
-        startStopBtn.textContent = 'Stop';
-    }
+.heading {
+  color: #0A4E63;
+  font-family: "Bree Serif";
+  font-size: 65px;
+  margin: 10px;
 }
 
-//to Update time display every 10ms
-function updateTimeDisplay() {
-    const elapsedTimeMillis = Date.now() - startTime;
-    const formattedTime = formatTime(elapsedTimeMillis);
-    timeDisplay.textContent = formattedTime;
+.bg {
+  font-family: Arial, sans-serif;
+  background-color: #ECFBF9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-size: cover;
+  margin: 0;
+  height: 100vh;
 }
 
-// Format time as HH:mm:ss.SSS
-function formatTime(milliseconds) {
-    const date = new Date(milliseconds);
-    const hours = date.getUTCHours().toString().padStart(2, '0');
-    const minutes = date.getUTCMinutes().toString().padStart(2, '0');
-    const seconds = date.getUTCSeconds().toString().padStart(2, '0');
-    const millis = date.getUTCMilliseconds().toString().padStart(3, '0');
-    return `${hours}:${minutes}:${seconds}.${millis}`;
+.time {
+  font-size: 30px;
 }
 
-// Reset the stopwatch
-function resetStopwatch() {
-    clearInterval(timerInterval);
-    timerInterval = null;
-    elapsedTime = 0;
-    timeDisplay.textContent = '00:00:00.000';
-    startStopBtn.textContent = 'Start';
-    lapsList.innerHTML = '';
+.img1 {
+  height: 30%;
+  width: 20%;
 }
 
-// Add lap time
-function addLap() {
-    if (!timerInterval) return; // Only add lap when stopwatch is running
-    const elapsedTimeMillis = Date.now() - startTime;
-    const formattedTime = formatTime(elapsedTimeMillis);
-    const lapItem = document.createElement('li');
-    lapItem.textContent = formattedTime;
-    lapsList.appendChild(lapItem);
+.container {
+  text-align: center;
 }
 
-// Event listeners
-startStopBtn.addEventListener('click', startStop);
-lapResetBtn.addEventListener('click', function() {
-    if (timerInterval) {
-        addLap();
-    } else {
-        resetStopwatch();
-    }
-});
+.stopwatch {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 300px;
+  margin: 20px;
+}
+
+#display {
+  font-size: 2em;
+  margin-bottom: 10px;
+}
+
+.controls {
+  margin-bottom: 20px;
+}
+
+button {
+  background-color: #07422b;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 5px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #e50707;
+}
+
+button:active {
+  background-color: #48cab8;
+}
+
+#lapTimes {
+  list-style-type: none;
+  padding: 0;
+  text-align: left;
+}
+
+#lapTimes li {
+  font-size: 1.2em;
+  margin-bottom: 5px;
+  padding: 5px;
+  background-color: #f0f0f0;
+  border-radius: 5px;
+}
