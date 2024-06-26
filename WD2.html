@@ -14,24 +14,26 @@
 
 <body>
     <div>
-        <div class="text-center d-flex flex-column bg">
+        <div class="text-center d-flex flex-column justify-content-center bg">
             <h1 class="heading">StopWatch</h1>
             <img src="https://uxwing.com/wp-content/themes/uxwing/download/household-and-furniture/alarm-icon.png" class="img1 m-5" />
-            <div class="stopwatch">
-                <div class="controls">
-                    <button class="buttonStart" id="startStopBtn">Start</button>
-                    <button id="lapResetBtn">Reset</button>
-                </div>
-                <div class="display">
-                    <p id="time" class="time">00:00:00.000</p>
-                </div>
-                <div class="laps">
-                    <ul id="lapsList"></ul>
-                </div>
+            <div class=" d-flex flex-column justify-content-center">
+                <div class="container">
+                    <div class="stopwatch">
+                      <div id="display">00:00:00.000</div>
+                      <div class="controls">
+                        <button id="startBtn">Start</button>
+                        <button id="pauseBtn">Pause</button>
+                        <button id="resetBtn">Reset</button>
+                        <button id="lapBtn">Lap</button>
+                      </div>
+                      <ul id="lapTimes"></ul>
+                    </div>
+                  </div>
             </div>
         </div>
     </div>
-   <script src="scripttwo.js"></script>
+   <script src="script2.js"></script>
 </body>
 
 </html>
