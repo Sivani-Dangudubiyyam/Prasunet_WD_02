@@ -12,5 +12,6 @@ Technologies Used:
 
 Interact with the Stopwatch:
 1) Click on the "Start" button to start the stopwatch.
-2) Click on the "Stop" button to pause the stopwatch.
+2) Click on the "Pause" button to pause the stopwatch.
 3) Click on the "Reset" button to reset the stopwatch to zero.
+4) Click on the "Lap" button to record laps
