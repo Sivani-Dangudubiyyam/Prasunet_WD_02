@@ -1,85 +1,59 @@
-.heading {
-  color: #0A4E63;
-  font-family: "Bree Serif";
-  font-size: 65px;
-  margin: 10px;
+let startTime;
+let currentTime = 0;
+let lapCounter = 0;
+let timerInterval;
+let laps = [];
+
+const display = document.getElementById('display');
+const startBtn = document.getElementById('startBtn');
+const pauseBtn = document.getElementById('pauseBtn');
+const resetBtn = document.getElementById('resetBtn');
+const lapBtn = document.getElementById('lapBtn');
+const lapTimesList = document.getElementById('lapTimes');
+
+function formatTime(ms) {
+  let hours = Math.floor(ms / 3600000);
+  let minutes = Math.floor((ms % 3600000) / 60000);
+  let seconds = Math.floor((ms % 60000) / 1000);
+  let milliseconds = ms % 1000;
+
+  return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}.${milliseconds.toString().padStart(3, '0')}`;
 }
 
-.bg {
-  font-family: Arial, sans-serif;
-  background-color: #ECFBF9;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-size: cover;
-  margin: 0;
-  height: 100vh;
+function updateDisplay() {
+  display.textContent = formatTime(currentTime);
 }
 
-.time {
-  font-size: 30px;
+function startTimer() {
+  startTime = Date.now() - currentTime;
+  timerInterval = setInterval(function() {
+    currentTime = Date.now() - startTime;
+    updateDisplay();
+  }, 10);
 }
 
-.img1 {
-  height: 30%;
-  width: 20%;
+function pauseTimer() {
+  clearInterval(timerInterval);
 }
 
-.container {
-  text-align: center;
+function resetTimer() {
+  clearInterval(timerInterval);
+  currentTime = 0;
+  laps = [];
+  lapCounter = 0;
+  updateDisplay();
+  lapTimesList.innerHTML = '';
 }
 
-.stopwatch {
-  background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  width: 300px;
-  margin: 20px;
+function lapTimer() {
+  lapCounter++;
+  laps.push(currentTime);
+  let lapTime = document.createElement('li');
+  lapTime.textContent = `Lap ${lapCounter}: ${formatTime(currentTime)}`;
+  lapTimesList.appendChild(lapTime);
 }
 
-#display {
-  font-size: 2em;
-  margin-bottom: 10px;
-}
-
-.controls {
-  margin-bottom: 20px;
-}
-
-button {
-  background-color: #07422b;
-  border: none;
-  color: white;
-  padding: 10px 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 5px;
-  cursor: pointer;
-  border-radius: 5px;
-  transition: background-color 0.3s;
-}
-
-button:hover {
-  background-color: #e50707;
-}
-
-button:active {
-  background-color: #48cab8;
-}
-
-#lapTimes {
-  list-style-type: none;
-  padding: 0;
-  text-align: left;
-}
-
-#lapTimes li {
-  font-size: 1.2em;
-  margin-bottom: 5px;
-  padding: 5px;
-  background-color: #f0f0f0;
-  border-radius: 5px;
-}
+startBtn.addEventListener('click', startTimer);
+pauseBtn.addEventListener('click', pauseTimer);
+resetBtn.addEventListener('click', resetTimer);
+lapBtn.addEventListener('click', lapTimer);
