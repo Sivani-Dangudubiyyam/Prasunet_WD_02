@@ -13,6 +13,9 @@ This project implements a simple stopwatch design using HTML, CSS,Bootstrap and 
 - JavaScript
 - Bootstrap
 
+## Screenshots
+
+![App Screenshot](https://github.com/Sivani-Dangudubiyyam/Prasunet_WD_02/blob/main/Preview.png)
 
 ## Usage
 - Click on the "Start" button to start the stopwatch.
